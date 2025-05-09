@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import EmitirFactura from './EmitirFactura';
 
-interface FacturaPreguntasProps {
+interface Props {
   onVolver: () => void;
 }
 
-const FacturaPreguntas: React.FC<FacturaPreguntasProps> = ({ onVolver }) => {
+const FacturaPreguntas: React.FC<Props> = ({ onVolver }) => {
+  const [irAFactura, setIrAFactura] = useState(false);
+
+  if (irAFactura) {
+    return <EmitirFactura onVolver={() => setIrAFactura(false)} />;
+  }
+
   return (
     <div className="max-w-md mx-auto text-center">
       {/* Encabezado */}
@@ -19,7 +26,10 @@ const FacturaPreguntas: React.FC<FacturaPreguntasProps> = ({ onVolver }) => {
 
       {/* Opciones */}
       <div className="space-y-4">
-        <button className="w-full bg-blue-900 text-white py-3 rounded-xl font-semibold shadow">
+        <button
+          onClick={() => setIrAFactura(true)}
+          className="w-full bg-blue-900 text-white py-3 rounded-xl font-semibold shadow"
+        >
           Factura Electrónica
         </button>
         <button className="w-full bg-blue-900 text-white py-3 rounded-xl font-semibold shadow">

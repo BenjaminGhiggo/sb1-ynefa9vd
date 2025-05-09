@@ -1,30 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '../layouts/Layout';
+import PlanQuipuEmprende from '../components/PlanQuipuEmprende';
+import PlanQuipuCrece from '../components/PlanQuipuCrece';
+import PlanQuipuPro from '../components/PlanQuipuPro';
 
 const Suscripcion: React.FC = () => {
-  const planes = [
-    'Plan Quipu Emprende',
-    'Plan Quipu Crece',
-    'Plan Quipu Pro',
-  ];
+  const [planSeleccionado, setPlanSeleccionado] = useState<string | null>(null);
 
   return (
     <Layout title="Suscripción">
-      <div className="flex flex-col items-center gap-6 max-w-sm mx-auto py-4">
-        {planes.map((plan, index) => (
+      {planSeleccionado === 'emprende' ? (
+        <PlanQuipuEmprende onVolver={() => setPlanSeleccionado(null)} />
+      ) : planSeleccionado === 'crece' ? (
+        <PlanQuipuCrece onVolver={() => setPlanSeleccionado(null)} />
+      ) : planSeleccionado === 'pro' ? (
+        <PlanQuipuPro onVolver={() => setPlanSeleccionado(null)} />
+      ) : (
+        <div className="max-w-md mx-auto text-center space-y-6">
           <button
-            key={index}
-            className="bg-blue-900 text-white text-center text-lg font-bold px-6 py-4 rounded-2xl w-full shadow hover:bg-blue-800 transition"
+            onClick={() => setPlanSeleccionado('emprende')}
+            className="w-full bg-blue-900 text-white py-4 rounded-xl font-bold shadow"
           >
-            {plan}
+            Plan Quipu Emprende
           </button>
-        ))}
-        <img
-          src="/assets/avatar.png"
-          alt="Kappi"
-          className="w-44 h-auto mt-4 object-contain"
-        />
-      </div>
+          <button
+            onClick={() => setPlanSeleccionado('crece')}
+            className="w-full bg-blue-900 text-white py-4 rounded-xl font-bold shadow"
+          >
+            Plan Quipu Crece
+          </button>
+          <button
+            onClick={() => setPlanSeleccionado('pro')}
+            className="w-full bg-blue-900 text-white py-4 rounded-xl font-bold shadow"
+          >
+            Plan Quipu Pro
+          </button>
+
+          <img
+            src="/assets/avatar.png"
+            alt="Kappi"
+            className="mx-auto w-32 h-auto mt-8"
+          />
+        </div>
+      )}
     </Layout>
   );
 };

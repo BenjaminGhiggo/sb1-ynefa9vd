@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import EmitirBoleta from './EmitirBoleta';
 
-interface BoletaPreguntasProps {
+interface Props {
   onVolver: () => void;
 }
 
-const BoletaPreguntas: React.FC<BoletaPreguntasProps> = ({ onVolver }) => {
+const BoletaPreguntas: React.FC<Props> = ({ onVolver }) => {
+  const [irAElectronica, setIrAElectronica] = useState(false);
+
+  if (irAElectronica) {
+    return <EmitirBoleta onVolver={() => setIrAElectronica(false)} />;
+  }
+
   return (
     <div className="max-w-md mx-auto text-center">
       {/* Encabezado */}
@@ -19,7 +26,10 @@ const BoletaPreguntas: React.FC<BoletaPreguntasProps> = ({ onVolver }) => {
 
       {/* Opciones */}
       <div className="space-y-4">
-        <button className="w-full bg-blue-900 text-white py-3 rounded-xl font-semibold shadow">
+        <button
+          onClick={() => setIrAElectronica(true)}
+          className="w-full bg-blue-900 text-white py-3 rounded-xl font-semibold shadow"
+        >
           Boleta Electrónica
         </button>
         <button className="w-full bg-blue-900 text-white py-3 rounded-xl font-semibold shadow">
