@@ -1,15 +1,25 @@
 import React, { useState } from 'react';
 import EmitirFactura from './EmitirFactura';
+import SubirArchivoFactura from './SubirArchivoFactura';
+import EscanearFactura from './EscanearFactura';
+
+type Vista = 'opciones' | 'emitir' | 'subir' | 'escanear';
 
 interface Props {
   onVolver: () => void;
 }
 
 const FacturaPreguntas: React.FC<Props> = ({ onVolver }) => {
-  const [irAFactura, setIrAFactura] = useState(false);
+  const [vista, setVista] = useState<Vista>('opciones');
 
-  if (irAFactura) {
-    return <EmitirFactura onVolver={() => setIrAFactura(false)} />;
+  if (vista === 'emitir') {
+    return <EmitirFactura onVolver={() => setVista('opciones')} />;
+  }
+  if (vista === 'subir') {
+    return <SubirArchivoFactura onVolver={() => setVista('opciones')} />;
+  }
+  if (vista === 'escanear') {
+    return <EscanearFactura onVolver={() => setVista('opciones')} />;
   }
 
   return (
@@ -27,21 +37,24 @@ const FacturaPreguntas: React.FC<Props> = ({ onVolver }) => {
       {/* Opciones */}
       <div className="space-y-4">
         <button
-          onClick={() => setIrAFactura(true)}
+          onClick={() => setVista('emitir')}
           className="w-full bg-blue-900 text-white py-3 rounded-xl font-semibold shadow"
         >
           Factura Electrónica
         </button>
-        <button className="w-full bg-blue-900 text-white py-3 rounded-xl font-semibold shadow">
-          Subir archivo Factura
+        <button
+          onClick={() => setVista('subir')}
+          className="w-full bg-blue-900 text-white py-3 rounded-xl font-semibold shadow"
+        >
+          Subir archivo factura
         </button>
-        <button className="w-full bg-blue-900 text-white py-3 rounded-xl font-semibold shadow">
-          Escanear Factura
+        <button
+          onClick={() => setVista('escanear')}
+          className="w-full bg-blue-900 text-white py-3 rounded-xl font-semibold shadow"
+        >
+          Escanear factura
         </button>
       </div>
-
-      {/* Botón Volver */}
-      
     </div>
   );
 };
