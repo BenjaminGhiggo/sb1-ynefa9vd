@@ -1,4 +1,5 @@
 import React from 'react';
+import Retroceder from './Retroceder';
 
 interface Props {
   onVolver: () => void;
@@ -6,7 +7,7 @@ interface Props {
 
 const PlanQuipuCrece: React.FC<Props> = ({ onVolver }) => {
   return (
-    <div className="max-w-md mx-auto text-center">
+    <div className="max-w-md mx-auto text-center pb-24">
       <h2 className="text-2xl font-bold text-blue-900 mb-2">Plan Quipu Crece</h2>
       <p className="text-sm text-gray-700 mb-6">
         Para negocios en crecimiento que necesitan orden y claridad contable.
@@ -32,6 +33,8 @@ const PlanQuipuCrece: React.FC<Props> = ({ onVolver }) => {
       <button className="bg-blue-800 text-white px-6 py-2 rounded-full font-semibold text-sm shadow">
         Prueba gratuita de 1 mes
       </button>
+
+      <Retroceder onClick={onVolver} />
     </div>
   );
 };

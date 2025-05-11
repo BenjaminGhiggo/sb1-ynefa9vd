@@ -1,0 +1,5 @@
+[
+  { "id": 1, "type": "Boleta",  "route": "/emision/boleta" },
+  { "id": 2, "type": "Factura", "route": "/emision/factura" },
+  { "id": 3, "type": "Mixta",   "route": "/emision/mixta"   }
+]

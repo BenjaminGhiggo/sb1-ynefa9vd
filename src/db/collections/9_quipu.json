@@ -1,0 +1,5 @@
+[
+  { "id": 1, "prompt": "¿Cuánto debo declarar este mes?" },
+  { "id": 2, "prompt": "¿Qué impuestos me tocan?"         },
+  { "id": 3, "prompt": "Escribir consulta..."             }
+]

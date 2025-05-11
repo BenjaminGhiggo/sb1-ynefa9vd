@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "title": "Emisión de boletas y Facturas",
+    "icon": "FileText",
+    "action": "Crear",
+    "path": "/emision"
+  },
+  {
+    "id": 2,
+    "title": "Historial de comprobantes",
+    "icon": "History",
+    "action": "Ver",
+    "path": "/historial"
+  },
+  {
+    "id": 3,
+    "title": "Métricas",
+    "icon": "BarChart3",
+    "action": "Ver",
+    "path": "/metricas"
+  },
+  {
+    "id": 4,
+    "title": "Alertas",
+    "icon": "Bell",
+    "action": "Ver",
+    "path": "/alertas"
+  },
+  {
+    "id": 5,
+    "title": "Asesoría por GenAI",
+    "icon": "MessageSquare",
+    "action": "Ver",
+    "path": "/asesoria"
+  },
+  {
+    "id": 6,
+    "title": "Declaración del mes",
+    "icon": "Calendar",
+    "action": "Ver",
+    "path": "/declaracion"
+  },
+  {
+    "id": 7,
+    "title": "Suscripción",
+    "icon": "DollarSign",
+    "action": "Ver",
+    "path": "/suscripcion"
+  },
+  {
+    "id": 8,
+    "title": "Quipu",
+    "icon": "BotIcon",
+    "action": "Ver",
+    "path": "/quipu"
+  },
+  {
+    "id": 9,
+    "title": "Preguntas frecuentes",
+    "icon": "HelpCircle",
+    "action": "Ver",
+    "path": "/preguntas"
+  },
+  {
+    "id": 10,
+    "title": "Bienvenido",
+    "icon": "UserCheck",
+    "action": "Ver",
+    "path": "/"
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "question": "¿Cuándo debo declarar mis impuestos?",
+    "answer":   "Cada mes, según el cronograma de SUNAT y tu último dígito de RUC."
+  },
+  {
+    "id": 2,
+    "question": "¿Qué debo declarar si solo emito boletas?",
+    "answer":   "Debes declarar tu IGV e Impuesto a la Renta según tu régimen."
+  },
+  {
+    "id": 3,
+    "question": "¿Cómo sé cuánto debo pagar?",
+    "answer":   "Quipu.ia calcula automáticamente según tus comprobantes."
+  }
+]

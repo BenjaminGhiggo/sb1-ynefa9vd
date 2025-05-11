@@ -1,0 +1,5 @@
+[
+  { "id": 1, "title": "Declaración",            "videoUrl": "/videos/declaracion.mp4"     },
+  { "id": 2, "title": "Crear usuario en SUNAT", "videoUrl": "/videos/crear-sunat.mp4"     },
+  { "id": 3, "title": "Uso del panel de métricas","videoUrl": "/videos/panel-metricas.mp4" }
+]

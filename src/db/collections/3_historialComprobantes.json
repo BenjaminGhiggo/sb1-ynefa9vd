@@ -1,0 +1,5 @@
+[
+  { "id": 1, "tipo": "Boleta",  "metodo": "Manual",     "fecha": "2025-04-29", "monto": -4596.00 },
+  { "id": 2, "tipo": "Factura", "metodo": "Electrónica","fecha": "2025-04-25", "monto": 14536.40 },
+  { "id": 3, "tipo": "Factura", "metodo": "Manual",     "fecha": "2025-04-20", "monto": -5369.00 }
+]

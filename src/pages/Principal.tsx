@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   FileText,
   History,
@@ -6,86 +7,48 @@ import {
   Bell,
   MessageSquare,
   Calendar,
-  UserCheck,
   DollarSign,
-  HelpCircle,
   BotIcon,
+  HelpCircle,
+  UserCheck,
+  LucideIcon,
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+
 import Layout from '../layouts/Layout';
+import cardsData from '../db/collections/1_principal.json'; // ←  ⚠️  ruta relativa
+
+/** Relación nombre‑icono (los mismos valores que guardaste en el JSON) */
+const iconMap: Record<string, LucideIcon> = {
+  FileText,
+  History,
+  BarChart3,
+  Bell,
+  MessageSquare,
+  Calendar,
+  DollarSign,
+  BotIcon,
+  HelpCircle,
+  UserCheck,
+};
+
+interface Card {
+  id: number;
+  title: string;
+  path: string;            //  ←  usa “path” en lugar de “route”
+  icon: keyof typeof iconMap;
+  action: string;
+}
 
 const Principal: React.FC = () => {
   const navigate = useNavigate();
-
-  const cards = [
-    {
-      title: 'Emisión de boletas y Facturas',
-      icon: <FileText className="w-10 h-10 text-orange-500" />,
-      action: 'Crear',
-      path: '/emision',
-    },
-    {
-      title: 'Historial de comprobantes',
-      icon: <History className="w-10 h-10 text-orange-500" />,
-      action: 'Ver',
-      path: '/historial',
-    },
-    {
-      title: 'Métricas',
-      icon: <BarChart3 className="w-10 h-10 text-orange-500" />,
-      action: 'Ver',
-      path: '/metricas',
-    },
-    {
-      title: 'Alertas',
-      icon: <Bell className="w-10 h-10 text-orange-500" />,
-      action: 'Ver',
-      path: '/alertas',
-    },
-    {
-      title: 'Asesoría por GenAI',
-      icon: <MessageSquare className="w-10 h-10 text-orange-500" />,
-      action: 'Ver',
-      path: '/asesoria',
-    },
-    {
-      title: 'Declaración del mes',
-      icon: <Calendar className="w-10 h-10 text-orange-500" />,
-      action: 'Ver',
-      path: '/declaracion',
-    },
-    {
-      title: 'Suscripción',
-      icon: <DollarSign className="w-10 h-10 text-orange-500" />,
-      action: 'Ver',
-      path: '/suscripcion',
-    },
-    {
-      title: 'Quipu',
-      icon: <BotIcon className="w-10 h-10 text-orange-500" />,
-      action: 'Ver',
-      path: '/quipu',
-    },
-    {
-      title: 'Preguntas frecuentes',
-      icon: <HelpCircle className="w-10 h-10 text-orange-500" />,
-      action: 'Ver',
-      path: '/preguntas',
-    },
-    {
-      title: 'Bienvenido',
-      icon: <UserCheck className="w-10 h-10 text-orange-500" />,
-      action: 'Ver',
-      path: '/',
-    },
-  ];
+  const cards = cardsData as Card[];
 
   return (
     <Layout title="Principal">
-      {/* Texto saludo y avatar */}
+      {/* Saludo */}
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold text-slate-800 max-w-[60%] leading-tight">
-          ¡Hola! soy Kappi,<br /> tu contador virtual...
+          ¡Hola! soy Kappi,<br /> tu contador virtual…
         </h2>
         <img
           src="/assets/avatar.png"
@@ -94,27 +57,30 @@ const Principal: React.FC = () => {
         />
       </div>
 
-      {/* Tarjetas */}
+      {/* Tarjetas */}
       <div className="grid grid-cols-2 gap-4">
-        {cards.map((card, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-2xl border border-gray-300 p-5 shadow min-h-[180px] flex flex-col justify-between items-center text-center"
-          >
-            <div className="flex flex-col items-center justify-center flex-1">
-              <div className="mb-2">{card.icon}</div>
-              <h3 className="text-[13px] font-bold text-orange-600 mb-4 leading-tight">
-                {card.title}
-              </h3>
-            </div>
-            <button
-              onClick={() => navigate(card.path)}
-              className="bg-green-500 text-white px-6 py-1 text-sm rounded-full hover:bg-green-600 transition"
+        {cards.map(({ id, title, path, icon, action }) => {
+          const IconComp = iconMap[icon];
+          return (
+            <div
+              key={id}
+              className="bg-white rounded-2xl border border-gray-300 p-5 shadow min-h-[180px] flex flex-col justify-between items-center text-center"
             >
-              {card.action}
-            </button>
-          </div>
-        ))}
+              <div className="flex flex-col items-center justify-center flex-1">
+                <IconComp className="w-10 h-10 text-orange-500 mb-2" />
+                <h3 className="text-[13px] font-bold text-orange-600 mb-4 leading-tight">
+                  {title}
+                </h3>
+              </div>
+              <button
+                onClick={() => navigate(path)}
+                className="bg-green-500 text-white px-6 py-1 text-sm rounded-full hover:bg-green-600 transition"
+              >
+                {action}
+              </button>
+            </div>
+          );
+        })}
       </div>
     </Layout>
   );

@@ -1,0 +1,5 @@
+[
+  { "id": 1, "montoDeclarado": 256.84, "variacion": 49.89 },
+  { "id": 2, "montoDeclarado": 512.12, "variacion": -12.34 },
+  { "id": 3, "montoDeclarado": 1024.00,"variacion": 25.00 }
+]

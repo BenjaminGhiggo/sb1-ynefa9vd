@@ -1,4 +1,5 @@
 import React from 'react';
+import Retroceder from './Retroceder';
 
 interface Props {
   onVolver: () => void;
@@ -6,7 +7,7 @@ interface Props {
 
 const PlanQuipuEmprende: React.FC<Props> = ({ onVolver }) => {
   return (
-    <div className="max-w-md mx-auto text-center">
+    <div className="max-w-md mx-auto text-center pb-24">
       <h2 className="text-2xl font-bold text-blue-900 mb-2">Plan Quipu Emprende</h2>
       <p className="text-sm text-gray-700 mb-6">
         Para quienes recién inician su negocio o actividad independiente.
@@ -18,9 +19,7 @@ const PlanQuipuEmprende: React.FC<Props> = ({ onVolver }) => {
 
         <h4 className="text-left font-bold text-blue-800 mb-2">Incluye:</h4>
         <ul className="text-left text-sm list-disc pl-5 space-y-1 text-gray-800">
-          <li>
-            Emisión <strong>200</strong> de boletas y facturas
-          </li>
+          <li><strong>Emisión 200</strong> de boletas y facturas</li>
           <li>Registro automático de ventas y gastos</li>
           <li>Recordatorios de vencimientos</li>
           <li>Historial inteligente de comprobantes</li>
@@ -32,6 +31,7 @@ const PlanQuipuEmprende: React.FC<Props> = ({ onVolver }) => {
         Prueba gratuita de 1 mes
       </button>
 
+      <Retroceder onClick={onVolver} />
     </div>
   );
 };

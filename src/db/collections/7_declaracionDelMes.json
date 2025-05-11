@@ -1,0 +1,5 @@
+[
+  { "id": 1, "mes": "Mayo",   "monto": 256.84,  "action": "Declarar" },
+  { "id": 2, "mes": "Abril",  "monto": 1024.54, "action": "Descargar" },
+  { "id": 3, "mes": "Marzo",  "monto": 1024.54, "action": "Descargar" }
+]

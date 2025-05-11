@@ -1,0 +1,5 @@
+[
+  { "id": 1, "plan": "Quipu Emprende", "price": 69,  "frequency": "Mensual" },
+  { "id": 2, "plan": "Quipu Crece",    "price": 99,  "frequency": "Mensual" },
+  { "id": 3, "plan": "Quipu Pro",      "price": 899, "frequency": "Anual"   }
+]
