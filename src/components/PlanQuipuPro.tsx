@@ -29,15 +29,6 @@ const PlanQuipuPro: React.FC<Props> = ({ onVolver }) => {
       <button className="bg-blue-800 text-white px-6 py-2 rounded-full font-semibold text-sm shadow">
         Prueba gratuita de 1 mes
       </button>
-
-      <div className="mt-6">
-        <button
-          onClick={onVolver}
-          className="text-blue-800 underline text-sm"
-        >
-          ← Volver
-        </button>
-      </div>
     </div>
   );
 };

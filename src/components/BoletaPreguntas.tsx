@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
 import EmitirBoleta from './EmitirBoleta';
+import SubirArchivoBoleta from './SubirArchivoBoleta';
 
 interface Props {
   onVolver: () => void;
 }
 
 const BoletaPreguntas: React.FC<Props> = ({ onVolver }) => {
-  const [irAElectronica, setIrAElectronica] = useState(false);
+  const [vista, setVista] = useState<'opciones' | 'emitir' | 'subir'>('opciones');
 
-  if (irAElectronica) {
-    return <EmitirBoleta onVolver={() => setIrAElectronica(false)} />;
+  if (vista === 'emitir') {
+    return <EmitirBoleta onVolver={() => setVista('opciones')} />;
+  }
+
+  if (vista === 'subir') {
+    return <SubirArchivoBoleta onVolver={() => setVista('opciones')} />;
   }
 
   return (
     <div className="max-w-md mx-auto text-center">
-      {/* Encabezado */}
       <div className="bg-white rounded-xl border border-gray-300 shadow-md p-6 mb-8">
         <img
           src="/assets/Boleta-icono.png"
@@ -24,15 +28,17 @@ const BoletaPreguntas: React.FC<Props> = ({ onVolver }) => {
         <h2 className="text-xl font-bold text-orange-600">Boleta</h2>
       </div>
 
-      {/* Opciones */}
       <div className="space-y-4">
         <button
-          onClick={() => setIrAElectronica(true)}
+          onClick={() => setVista('emitir')}
           className="w-full bg-blue-900 text-white py-3 rounded-xl font-semibold shadow"
         >
           Boleta Electrónica
         </button>
-        <button className="w-full bg-blue-900 text-white py-3 rounded-xl font-semibold shadow">
+        <button
+          onClick={() => setVista('subir')}
+          className="w-full bg-blue-900 text-white py-3 rounded-xl font-semibold shadow"
+        >
           Subir archivo boleta
         </button>
         <button className="w-full bg-blue-900 text-white py-3 rounded-xl font-semibold shadow">
@@ -40,7 +46,6 @@ const BoletaPreguntas: React.FC<Props> = ({ onVolver }) => {
         </button>
       </div>
 
-      {/* Botón Volver */}
       <button
         onClick={onVolver}
         className="mt-6 text-blue-800 underline text-sm"

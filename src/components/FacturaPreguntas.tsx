@@ -41,12 +41,7 @@ const FacturaPreguntas: React.FC<Props> = ({ onVolver }) => {
       </div>
 
       {/* Botón Volver */}
-      <button
-        onClick={onVolver}
-        className="mt-6 text-blue-800 underline text-sm"
-      >
-        ← Volver
-      </button>
+      
     </div>
   );
 };

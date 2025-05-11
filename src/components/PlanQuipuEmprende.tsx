@@ -32,14 +32,6 @@ const PlanQuipuEmprende: React.FC<Props> = ({ onVolver }) => {
         Prueba gratuita de 1 mes
       </button>
 
-      <div className="mt-6">
-        <button
-          onClick={onVolver}
-          className="text-blue-800 underline text-sm"
-        >
-          ← Volver
-        </button>
-      </div>
     </div>
   );
 };

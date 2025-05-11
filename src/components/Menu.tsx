@@ -19,7 +19,8 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
     { id: 6, name: 'Asesoría por GenAI', path: '/asesoria' },
     { id: 7, name: 'Mis Métricas', path: '/metricas' },
     { id: 8, name: 'Declaración del Mes', path: '/declaracion' },
-    { id: 9, name: 'Alertas', path: '/alertas' }
+    { id: 9, name: 'Alertas', path: '/alertas' },
+    { id: 10, name: 'Preguntas frecuentes', path: '/preguntas' }
   ];
 
   const handleNavigation = (path: string) => {

@@ -19,7 +19,7 @@ const WelcomePage: React.FC = () => {
             <img 
               src="/assets/logo-quipu.png" 
               alt="Logo Quipu.ai" 
-              className="w-full h-full object-contain"
+              className="w-auto h-full object-contain"
             />
           </div>
           
@@ -31,7 +31,7 @@ const WelcomePage: React.FC = () => {
             <img 
               src="/assets/avatar-user.png" 
               alt="Avatar del usuario" 
-              className="w-full h-full rounded-full object-cover"
+              className="w-auto h-full rounded-full object-cover"
             />
           </div>
           

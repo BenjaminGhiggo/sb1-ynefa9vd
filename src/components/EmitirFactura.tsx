@@ -62,12 +62,7 @@ const EmitirFactura: React.FC<Props> = ({ onVolver }) => {
         </button>
       </form>
 
-      <button
-        onClick={onVolver}
-        className="mt-6 text-blue-800 underline text-sm"
-      >
-        ← Volver
-      </button>
+      
     </div>
   );
 };

@@ -1,30 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Layout from '../layouts/Layout';
+import IniciarSesionSunat from '../components/IniciarSesionSunat';
 import BoletaPreguntas from '../components/BoletaPreguntas';
 import FacturaPreguntas from '../components/FacturaPreguntas';
 
 const EmisionBoletaFactura: React.FC = () => {
+  const [autenticado, setAutenticado] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedType, setSelectedType] = useState<string>('');
   const [mostrarBoleta, setMostrarBoleta] = useState(false);
   const [mostrarFactura, setMostrarFactura] = useState(false);
 
-  const handleDocumentClick = (type: string) => {
-    setSelectedType(type);
-    setIsModalOpen(true);
-  };
+  // Función de retroceso único
+  const handleBack = useCallback(() => {
+    if (mostrarBoleta) setMostrarBoleta(false);
+    else if (mostrarFactura) setMostrarFactura(false);
+    else setAutenticado(false);
+  }, [mostrarBoleta, mostrarFactura]);
+
+  // Primer paso: autenticarse con SUNAT
+  if (!autenticado) {
+    return <IniciarSesionSunat onConectar={() => setAutenticado(true)} />;
+  }
+
+  const floatingBackNeeded = autenticado;
 
   return (
-    <Layout title="Emisor de boletas/facturas">
+    <Layout
+      title="Emisor de boletas/facturas"
+      showFloatingBack={floatingBackNeeded}
+      onFloatingBack={handleBack}
+    >
       {mostrarBoleta ? (
-        <BoletaPreguntas onVolver={() => setMostrarBoleta(false)} />
+        <BoletaPreguntas onVolver={handleBack} />
       ) : mostrarFactura ? (
-        <FacturaPreguntas onVolver={() => setMostrarFactura(false)} />
+        <FacturaPreguntas onVolver={handleBack} />
       ) : (
         <>
-          {/* Tarjeta con imagen y título */}
+          {/* Tarjeta de bienvenida */}
           <div className="bg-white rounded-xl border border-gray-300 shadow-md p-6 text-center mb-8 max-w-md mx-auto">
-            <h2 className="text-xl font-bold text-orange-500 mb-4">Boleta o Factura?</h2>
+            <h2 className="text-xl font-bold text-orange-500 mb-4">
+              Boleta o Factura?
+            </h2>
             <img
               src="/assets/avatar.png"
               alt="Kappi"
@@ -32,7 +49,7 @@ const EmisionBoletaFactura: React.FC = () => {
             />
           </div>
 
-          {/* Botones de selección */}
+          {/* Selector Boleta / Factura */}
           <div className="grid grid-cols-2 gap-6 max-w-md mx-auto">
             <button
               onClick={() => setMostrarBoleta(true)}
@@ -43,7 +60,9 @@ const EmisionBoletaFactura: React.FC = () => {
                 alt="Boleta"
                 className="w-12 h-12 mb-2 object-contain"
               />
-              <span className="text-base font-semibold text-orange-600">Boleta</span>
+              <span className="text-base font-semibold text-orange-600">
+                Boleta
+              </span>
             </button>
 
             <button
@@ -55,13 +74,15 @@ const EmisionBoletaFactura: React.FC = () => {
                 alt="Factura"
                 className="w-12 h-12 mb-2 object-contain"
               />
-              <span className="text-base font-semibold text-orange-600">Factura</span>
+              <span className="text-base font-semibold text-orange-600">
+                Factura
+              </span>
             </button>
           </div>
         </>
       )}
 
-      {/* Modal de selección para Factura */}
+      {/* Modal informativo opcional */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl p-6 max-w-md w-full">

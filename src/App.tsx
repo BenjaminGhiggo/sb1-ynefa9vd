@@ -10,7 +10,7 @@ import AsesoriaGenai from './pages/AsesoriaGenai';
 import MisMetricas from './pages/MisMetricas';
 import DeclaracionDelMes from './pages/DeclaracionDelMes';
 import Alertas from './pages/Alertas';
-
+import PreguntasFrecuentes from './pages/PreguntasFrecuentes';
 
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
         <Route path="/metricas" element={<MisMetricas />} />
         <Route path="/declaracion" element={<DeclaracionDelMes />} />
         <Route path="/alertas" element={<Alertas />} />
-        
+        <Route path="/preguntas" element={<PreguntasFrecuentes />} />
       </Routes>
     </Router>
   );
