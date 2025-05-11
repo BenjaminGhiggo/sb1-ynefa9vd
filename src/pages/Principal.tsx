@@ -9,6 +9,7 @@ import {
   UserCheck,
   DollarSign,
   HelpCircle,
+  BotIcon,
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../layouts/Layout';
@@ -61,7 +62,7 @@ const Principal: React.FC = () => {
     },
     {
       title: 'Quipu',
-      icon: <UserCheck className="w-10 h-10 text-orange-500" />,
+      icon: <BotIcon className="w-10 h-10 text-orange-500" />,
       action: 'Ver',
       path: '/quipu',
     },
